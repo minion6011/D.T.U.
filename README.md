@@ -1,7 +1,9 @@
 # D.T.U. Data Terminal Unit [1.0.0]
 
-D.T.U. (Data Terminal Unit) is a web-based terminal-style interface designed for managing data and files in a minimalist environment.
+D.T.U. (Data Terminal Unit) is a web-based terminal-style interface designed for managing data and files in a minimalist environment. <br>
 It provides functionality similar to cloud storage, but with a text-based approach and without the ability to create folders inside data directories: all files are managed in a flat structure.
+
+<img src="example.png" width="65%" height="65%">
 
 ## ✨ Key Features
 
@@ -10,6 +12,4 @@ It provides functionality similar to cloud storage, but with a text-based approa
 - Quick search with `search <term>`.
 - Terminal-like environment.
 
-## 📖 Photo
 
-<img href="example.png">
