@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.T.U.</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+
+    <p>D.T.U. Data Terminal Unit [1.0.0]</p>
+    <p>Copyright (c) 2025 by Minion6011. All rights reserved.</p>
+    <br>
+    
+    <input type="file" id="fileInput" style="display: none;" multiple="">
+    
+    <div class="input-container" id="terminal-input">
+        <p id="prompt-user">
+            <span style="color:#2bff00;">guest@panel</span>:<span style="color:#162dd8;">~ $</span>
+        </p>
+        <input type="text" id="commandInput" placeholder="Inserisci un comando..." autofocus onkeydown="if (event.key === 'Enter') {sendCommand(this)} else if (event.key === 'ArrowUp') {navigateHistory(-1)} else if (event.key === 'ArrowDown') {navigateHistory(1)}">
+    </div>
+
+</body>
+</html>
