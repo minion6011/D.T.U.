@@ -259,7 +259,7 @@ function processCommand(command) {
                         (reqJson.message).forEach(reorder); 
                         function reorder(item, index) {
                             if (index != 0 && index / 3 == Math.floor(index / 3)) results += `<br>`;
-                            results += ` ${item}`;
+                            results += `${item}    `;
                         }
                         if (results == "") results = "No Files found";
                         printToTerminal(`Files in '${args[2]}': <br>${results}`, command);
@@ -540,3 +540,4 @@ function printToTerminal(text, command="", newLine=true) {
     window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
 
 }
+
