@@ -85,7 +85,6 @@ function processCommand(command) {
                 printToTerminal(`Error: Unable to reset attempts`, command);
             }
         })
-        printToTerminal(`Attempts reseted successfully`, command);
     }
 
     // *Logout
