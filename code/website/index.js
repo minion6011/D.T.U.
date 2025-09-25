@@ -485,6 +485,11 @@ function processCommand(command) {
     }
 }
 
+function decodeHtml(html) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  return doc.documentElement.textContent;
+}
 
 function closeEditor() {
     function getEditableText(el) {
@@ -500,7 +505,7 @@ function closeEditor() {
     }
 
     var innerText = getEditableText(document.getElementById('file-edit-textarea-id'));
-    fetch(`/file_edit?key=${encodeURIComponent(globalKey)}&name=${encodeURIComponent(temp_data)}&file_name=${encodeURIComponent(temp_name)}&content=${encodeURIComponent(innerText)}`, {
+    fetch(`/file_edit?key=${encodeURIComponent(globalKey)}&name=${encodeURIComponent(temp_data)}&file_name=${encodeURIComponent(temp_name)}&content=${encodeURIComponent(decodeHtml(innerText))}`, {
         method: 'POST',
     })
     .then(async response => {
@@ -557,8 +562,6 @@ fileInput.addEventListener('change', () => {
         commandInput.focus();
     })
 });
-
-
 
 
 function printToTerminal(text, command="", newLine=true) {
