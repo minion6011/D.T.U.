@@ -212,11 +212,30 @@ function processCommand(command) {
                 let reqJson = await response.json();
                 if (response.status == 200) {
                     let results = "";
-                    (reqJson.message).forEach(reorder); 
-                    function reorder(item, index) {
-                        if (index != 0 && index / 3 == Math.floor(index / 3)) results += `<br>`;
-                        results += ` ${index+1}. ${item}`;
+                    
+                    let maxSpaceR = [0,0,0];
+                    let indexR = 0;
+                    function get_reorder_data(item, index) {
+                        if (indexR === 3) {
+                        indexR = 0;
+                        }
+                        if (item.length + 4 > maxSpaceR[indexR]) 
+                        maxSpaceR[indexR] = item.length + 4;
+                        indexR++;
                     }
+                    let indexRG = 0;
+                    function reorder_items(item, index) {
+                    if (indexRG === 3) {
+                        indexRG = 0;
+                        results += "<br>"
+                    }
+                    results += item.padEnd(maxSpaceR[indexRG], " ");
+                    indexRG++;
+                    }
+
+                    (reqJson.message).forEach(get_reorder_data); 
+                    (reqJson.message).forEach(reorder_items); 
+
                     if (results == "") results = "No Data Folders found";
                     printToTerminal(`Data Folders: <br>${results}`, command);
                 } else if (response.status == 401) {
@@ -255,11 +274,30 @@ function processCommand(command) {
                     let reqJson = await response.json();
                     if (response.status == 200) {
                         let results = "";
-                        (reqJson.message).forEach(reorder); 
-                        function reorder(item, index) {
-                            if (index != 0 && index / 3 == Math.floor(index / 3)) results += `<br>`;
-                            results += `${item}    `;
+
+                        let maxSpaceR = [0,0,0];
+                        let indexR = 0;
+                        function get_reorder_data(item, index) {
+                            if (indexR === 3) {
+                            indexR = 0;
+                            }
+                            if (item.length + 4 > maxSpaceR[indexR]) 
+                            maxSpaceR[indexR] = item.length + 4;
+                            indexR++;
                         }
+                        let indexRG = 0;
+                        function reorder_items(item, index) {
+                        if (indexRG === 3) {
+                            indexRG = 0;
+                            results += "<br>"
+                        }
+                        results += item.padEnd(maxSpaceR[indexRG], " ");
+                        indexRG++;
+                        }
+
+                        (reqJson.message).forEach(get_reorder_data); 
+                        (reqJson.message).forEach(reorder_items); 
+
                         if (results == "") results = "No Files found";
                         printToTerminal(`Files in '${args[2]}': <br>${results}`, command);
                     }
