@@ -133,7 +133,6 @@ function processCommand(command) {
     // *Data
     else if (globalKey != null && command.startsWith("data")) {
         let args = (command.match(/'[^']*'|"[^"]*"|\S+/g) || []).map(a => a.replace(/^['"]|['"]$/g, ""));
-        console.log(args)
         if (args[1] == "-e") {
             if (args[2] == null || args[3] == null) {
                 printToTerminal(`Error: Provide the old and new Data Folder names`, command);
@@ -464,7 +463,6 @@ function closeEditor() {
     }
 
     var innerText = getEditableText(document.getElementById('file-edit-textarea-id'));
-    console.log(innerText)
     fetch(`/file_edit?key=${encodeURIComponent(globalKey)}&name=${encodeURIComponent(temp_data)}&file_name=${encodeURIComponent(temp_name)}&content=${encodeURIComponent(innerText)}`, {
         method: 'POST',
     })
@@ -540,4 +538,5 @@ function printToTerminal(text, command="", newLine=true) {
     divInput.appendChild(pResponse);
     divInput.appendChild(document.createElement("br"));
     window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+
 }
