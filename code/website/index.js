@@ -534,6 +534,7 @@ function printToTerminal(text, command="", newLine=true) {
         if (command != "" && newLine == false) {console.log("Error: You cannot add a command if you don't want a new line")};
     }
     let pResponse = document.createElement("p");
+    pResponse.className = "p-spaced"
     pResponse.innerHTML = text;
     divInput.appendChild(pResponse);
     divInput.appendChild(document.createElement("br"));
