@@ -61,3 +61,7 @@ body p {
     background-color: var(--text-color);
     color: var(--terminal-color);
 }
+
+.p-spaced {
+    white-space: pre;
+}
